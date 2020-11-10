@@ -1,18 +1,21 @@
 import React from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
+
+import Confetti from "react-confetti";
 import { Footer } from "../../components/footer";
+import useWindowSize from "../../utils/useWindowSize";
 
 const SuccessPage: React.FC = () => {
   const { query } = useRouter();
-
+  const { width, height } = useWindowSize();
   return (
     <div className={"min-h-screen"}>
       <Head>
         <title>@Blys 2 step verification</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <Confetti width={width} height={height} />
       <main className={"h-full min-h-screen bg-gray-100"}>
         <div className={"flex flex-column items-center justify-center h-full min-h-screen"}>
           <div className={"max-w-sm shadow rounded h-full w-full p-8 flex flex-col items-center bg-white"}>
