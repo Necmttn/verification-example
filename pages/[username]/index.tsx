@@ -14,9 +14,9 @@ export default function Home() {
   const submitButtonRef = useRef<HTMLButtonElement>(null);
   const [isValid, setValid] = useState(false);
   const [value, setValue] = useState("");
-  console.log(submitButtonRef);
+  const numberRegex = /^[0-9]*$/;
   useEffect(() => {
-    if (!value.includes(".")) {
+    if (!value.includes(".") && value.match(numberRegex)) {
       setValid(true);
     } else {
       setValid(false);
@@ -41,9 +41,7 @@ export default function Home() {
       } else {
         setErrors(data.errors);
       }
-    } catch (e) {
-      console.log("@@@", e);
-    }
+    } catch (e) {}
   };
   useEffect(() => {
     setErrors([]);

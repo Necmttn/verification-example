@@ -150,6 +150,7 @@ const ReactInputVerificationCode = ({
     if (pValue !== value.join("")) setValue(pValue.split(""));
   }, [pValue]);
 
+  const numberRegex = /^[0-9]*$/;
   return (
     <React.Fragment>
       <Global
@@ -196,7 +197,7 @@ const ReactInputVerificationCode = ({
             role="button"
             tabIndex={0}
             className={`ReactInputVerificationCode__item ${i === activeIndex ? "is-active" : ""} ${
-              value[i] === placeholder ? `border-b-2 border-red-600` : "border-gray-200"
+              !value[i].match(numberRegex) ? `border-b-2 border-red-600` : "border-gray-200"
             }`}
             onFocus={onItemFocus(i)}
           >
